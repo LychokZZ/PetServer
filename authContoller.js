@@ -39,10 +39,10 @@ class authController{
 
     async Stan(req, res){
         try{
-            const { username, Eat, Sleep, Play, Health } = req.body;
+            const { username, Eat, Sleep, Play, Health,LVL } = req.body;
             const updatedUser = await Stan.findOneAndUpdate(
               { username }, 
-              { $set: { Eat, Sleep, Play, Health } }, 
+              { $set: { Eat, Sleep, Play, Health ,LVL } }, 
               { new: true, upsert: true } 
             );
         

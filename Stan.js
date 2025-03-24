@@ -6,6 +6,7 @@ const stanSchema = new mongoose.Schema({
     Sleep: { type: Number, required: true },
     Play: { type: Number, required: true },
     Health: { type: Number, required: true },
+    LVL: { type: Number, required: true },
 });
 
 module.exports = mongoose.model("Stan", stanSchema);
