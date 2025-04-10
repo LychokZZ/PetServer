@@ -7,4 +7,4 @@ const LockSchema = new mongoose.Schema({
     Train: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Lock", stanSchema);
+module.exports = mongoose.model("Lock", LockSchema);
