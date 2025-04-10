@@ -108,7 +108,7 @@ class authController{
         try {
             const {username} = req.query;
             const lock = await Lock.findOne({username})
-            console.log(lock)
+            res.json(lock);
         } catch (error) {
             console.log(e)
             res.status(400).json({message: " Error post Stan"})
