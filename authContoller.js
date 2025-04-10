@@ -92,6 +92,7 @@ class authController{
     async setLock(req,res){
         try {
             const { username, Japan, City, Train} = req.body;
+            console.log(username, Japan, City, Train)
             const updatedProduct = await Product.findOneAndUpdate(
                 { username }, 
                 { $set: { Japan, City, Train } }, 
