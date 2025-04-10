@@ -93,12 +93,12 @@ class authController{
         try {
             const { username, Japan, City, Train} = req.body;
             console.log(username, Japan, City, Train)
-            const updatedProduct = await Product.findOneAndUpdate(
+            const updatedProducts = await Lock.findOneAndUpdate(
                 { username }, 
                 { $set: { Japan, City, Train } }, 
                 { new: true, upsert: true } 
               );
-            res.json(updatedProduct);
+            res.json(updatedProducts);
         } catch (error) {
             console.log(e)
             res.status(400).json({message: " Error post Stan"})
