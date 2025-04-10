@@ -1,6 +1,7 @@
 const User = require('./User')
 const Stan = require('./Stan')
 const Product =require('./Product')
+const Lock = require('./Lock')
 class authController{ 
 
     async registation(req, res){
@@ -85,6 +86,16 @@ class authController{
         }catch(e){
             console.log(e)
             res.status(400).json({message: " Error post Stan"})
+        }
+    }
+
+    async getLock(req,res){
+        try {
+            const {username} = req.query;
+            const lock = await Lock.findOne({username})
+            console.log(lock)
+        } catch (error) {
+            
         }
     }
 }

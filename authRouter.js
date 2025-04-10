@@ -9,5 +9,5 @@ router.post('/product',controller.product)
 
 router.get('/getStan', controller.getStan)
 router.get('/getProduct', controller.getProduct)
-
+router.get('/getLock', controller.getLock )
 module.exports = router 
