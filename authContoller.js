@@ -89,13 +89,28 @@ class authController{
         }
     }
 
+    async setLock(req,res){
+        try {
+            const { username, Japan, City, Train} = req.body;
+            const updatedProduct = await Product.findOneAndUpdate(
+                { username }, 
+                { $set: { Japan, City, Train } }, 
+                { new: true, upsert: true } 
+              );
+            res.json(updatedProduct);
+        } catch (error) {
+            console.log(e)
+            res.status(400).json({message: " Error post Stan"})
+        }
+    }
     async getLock(req,res){
         try {
             const {username} = req.query;
             const lock = await Lock.findOne({username})
             console.log(lock)
         } catch (error) {
-            
+            console.log(e)
+            res.status(400).json({message: " Error post Stan"})
         }
     }
 }
