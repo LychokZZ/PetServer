@@ -2,6 +2,7 @@ const User = require('./User')
 const Stan = require('./Stan')
 const Product =require('./Product')
 const Lock = require('./Lock')
+const Invest = require('./Invest')
 class authController{ 
 
     async registation(req, res){
@@ -92,7 +93,6 @@ class authController{
     async setLock(req,res){
         try {
             const { username, Japan, City, Train} = req.body;
-            console.log(username, Japan, City, Train)
             const updatedProducts = await Lock.findOneAndUpdate(
                 { username }, 
                 { $set: { Japan, City, Train } }, 
@@ -100,7 +100,7 @@ class authController{
               );
             res.json(updatedProducts);
         } catch (error) {
-            console.log(e)
+            console.log(error)
             res.status(400).json({message: " Error post Stan"})
         }
     }
@@ -110,10 +110,38 @@ class authController{
             const lock = await Lock.findOne({username})
             res.json(lock);
         } catch (error) {
-            console.log(e)
+            console.log(error)
             res.status(400).json({message: " Error post Stan"})
         }
     }
+
+    async setInvest(req,res){
+        try {
+            const { username, Market, Small, Pump, Plant} = req.body;
+            console.log(username, Market, Small, Pump, Plant)
+            const updatedInvest = await Invest.findOneAndUpdate(
+                { username }, 
+                { $set: { Market, Small, Pump, Plant } }, 
+                { new: true, upsert: true } 
+              );
+            res.json(updatedInvest);
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({message: " Error post Stan"})
+        }
+    }
+    
+    async getInvest(req,res){
+        try {
+            const {username} = req.query;
+            const inve = await Invest.findOne({username})
+            res.json(inve);
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({message: " Error post Stan"})
+        }
+    }
+
 }
 
 module.exports = new authController()
